@@ -1,0 +1,20 @@
+<div class="container">
+  <h5 class="lead"><%= current_user.email %></h5>
+  <h4 class="">Users</h4>
+  <% if @users.present? %>
+    <% @users.each do |user| %>
+      <%= render user if user.present? %>
+    <% end %>
+  <% else %>
+    <p>No users available.</p>
+  <% end %>
+
+  <h4>Rooms</h4>
+  <% if @rooms.present? %>
+    <% @rooms.each do |room| %>
+      <%= render room if room.present? %>
+    <% end %>
+  <% else %>
+    <p>No rooms available.</p>
+  <% end %>
+</div>
