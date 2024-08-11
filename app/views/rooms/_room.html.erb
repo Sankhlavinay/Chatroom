@@ -1,3 +1,5 @@
-<div>
-  <%= link_to room.name, room %>
-</div>
+<li class="list-group-item d-flex align-items-center justify-content-between user_list_item  p-2 rounded-1 border border-dark">
+  <div>
+    <%= link_to room.name, room, data: {turbo: "false"}, class: "text-decoration-none text-light chat_pfp" %>
+  </div>
+</li>

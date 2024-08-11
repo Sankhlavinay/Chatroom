@@ -1,3 +1,15 @@
-<div>
-  <%= link_to user.email, user %>
-</div>
+<% if @single_room && @single_room.participant?(@single_room, user) %>
+  <% isActive = 'active' %>
+<% else %>
+  <% isActive = '' %>
+<% end %>
+<li class="list-group-item d-flex align-items-center justify-content-between user_list_item  p-2 rounded-1 border border-dark <%= isActive %>">
+  <div>
+    <%= link_to image_tag(user.chat_avatar, class: "chat_pfp"), user %>
+  </div>
+  <div>
+    <%= link_to user.email, user, class: 'ms-2 me-auto text-decoration-none text-light', data: {turbo: "false"} %>
+  </div>
+</li>
+
+
