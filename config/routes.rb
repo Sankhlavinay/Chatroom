@@ -1,4 +1,3 @@
-
 Rails.application.routes.draw do
   # get 'users/show'
   resources :rooms do 
@@ -10,4 +9,5 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   get "user/:id", to: "users#show", as: "user"
+
 end

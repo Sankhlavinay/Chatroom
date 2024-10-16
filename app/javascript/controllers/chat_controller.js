@@ -2,19 +2,26 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-	connect() {
-		console.log("chat controller connected")
+	static targets = ["input", "submitButton"]
 
-		const textField = this.element.querySelector('#chat-text');
-    const submitButton = this.element.querySelector('[type="submit"]');
+  connect() {
+    console.log("Chat  controller connected")
+    this.toggleButtonState()
+  }
 
-		textField.addEventListener('input', (event) => {
-      const textFieldValue = event.target.value.trim();
-      if (textFieldValue === '') {
-        submitButton.disabled = true;
-      } else {
-        submitButton.disabled = false;
-      }
-    });
-	}
+  // This method is triggered on input changes
+  checkInput() {
+    console.log("Input checked:", this.inputTarget.value);
+    this.toggleButtonState()
+  }
+
+  toggleButtonState() {
+    const message = this.inputTarget.value.trim()
+    this.submitButtonTarget.disabled = message === ""
+  }
+
+  resetForm() {
+    this.inputTarget.value = ""
+    this.toggleButtonState()
+  }
 }
